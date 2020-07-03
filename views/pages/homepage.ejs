@@ -1,0 +1,11 @@
+<%- include('../partials/head') %> 
+<body>
+    <%- include('../partials/header') %> 
+    <ul>
+        <% for ( let i = 1; i <= 10; i++) { %>
+            <li><a href="question<%= i %> ">Question <%= i %> </a></li>
+        <% }; %> 
+    </ul>
+    
+
+</body>

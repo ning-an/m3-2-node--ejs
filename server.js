@@ -7,11 +7,11 @@ const morgan = require('morgan');
 // We need to "require" the files whose content we reference in this file.
 const exercisesP1 = require('./__workshop/exercisesP1');
 
-const q6 = (req, res) => res.render('pages/question6');
-const q7 = (req, res) => res.render('pages/question7');
-const q8 = (req, res) => res.render('pages/question8');
-const q9 = (req, res) => res.render('pages/question9');
-const q10 = (req, res) => res.render('pages/question10');
+const q6 = (req, res) => res.render('pages/question6', {questionNum: exercisesP1.questionNum(req)});
+const q7 = (req, res) => res.render('pages/question7', {questionNum: exercisesP1.questionNum(req)});
+const q8 = (req, res) => res.render('pages/question8', {questionNum: exercisesP1.questionNum(req)});
+const q9 = (req, res) => res.render('pages/question9', {questionNum: exercisesP1.questionNum(req)});
+const q10 = (req, res) => res.render('pages/question10', {questionNum: exercisesP1.questionNum(req)});
 
 express()
   // This will give us will log more info to the console. see https://www.npmjs.com/package/morgan
@@ -32,17 +32,18 @@ express()
   .get('/question8', q8)
   .get('/question9', q9)
   .get('/question10', q10)
-
+  .get('/bacon', (req, res) => res.send('It\'s a proven fact that all plans involving bacon have a 90 percent better chance of working out. '))
+  
   // this serves up the homepage
   .get('/', (req, res) => {
-    res.send("This is the homepage... it's empty :(");
+    res.render('pages/homepage');
   })
 
   // this is our catch all endpoint. If a user navigates to any endpoint that is not
   // defined above, they get to see our 404 page.
   .get('*', (req, res) => {
     res.status(404);
-    res.send('404... This is not the page you are looking for.');
+    res.render('pages/fourOhFour');
   })
 
   // Node spins up our server and sets it to listen on the PORT we defined above.

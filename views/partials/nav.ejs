@@ -1,0 +1,6 @@
+<div>
+    <% let previous = questionNum == 0 ? 'question9' : questionNum == 1 ? '/' : `question${questionNum - 1}` %> 
+    <% let next = questionNum == 0 ? '/' : `question${Number(questionNum) + 1}` %> 
+    <a href="<%= previous %>">Previous</a>
+    <a href="<%= next %> ">Next</a>
+</div>

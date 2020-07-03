@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<head>
-  <title>Node: Workshop 2</title>
-  <link rel="stylesheet" href="./css/styles.css" />
-</head>
+<%- include('../partials/head') %> 
 <body>
-  <header>
-    <h1>Node: Workshop 2</h1>
-  </header>
+  <%- include('../partials/header') %> 
   <div class="main">
     <h2>Part 1</h2>
     <div class="content">
@@ -14,7 +8,13 @@
       <div class="box answer">
         <h3>Answer</h3>
         <!-- render answer here -->
+        <ul>
+          <% popularGirlNames.forEach( (elem, index) => { %> 
+            <li><%= index + 1 %>. <%= elem %>  </li>
+          <% }); %>  
+        </ul>
       </div>
     </div>
   </div>
+  <%- include('../partials/nav') %> 
 </body>
